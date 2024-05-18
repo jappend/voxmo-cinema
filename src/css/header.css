@@ -1,0 +1,149 @@
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    height: 98px;
+    width: 100%;
+
+    background-color: var(--darker-dark);
+}
+
+#titleicon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+
+    margin-left: 2.5rem;
+    margin-right: 1rem;
+    height: 3rem;
+    width: 3rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+
+    color: var(--text-white);
+    background-color: var(--brand-blue);
+}
+
+.searchbar {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    height: 3rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+
+    width: 54.563rem;
+
+    color: var(--grey);
+    background-color: var(--white-minus);
+}
+
+::placeholder {
+    color: var(--grey);
+}
+
+#search-input {
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    color: var(--darker-dark);
+
+    width: 50.500rem;
+
+    padding-left: 1.5rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    height: 3rem;
+}
+
+.searchbar > .material-symbols-outlined {
+    display: flex;
+    font-size: 1.5rem;
+
+    align-items: end;
+}
+
+.vertical-header-rule {
+    background-color: var(--dark-minus);
+
+    height: 36px;
+    width: 0.313rem;
+}
+
+.dropdown-menu {
+    display: flex;
+    align-items: center;
+
+    font-weight: bold;
+    color: var(--text-white);
+
+    margin: 0px 2rem 0px 2rem;
+}
+
+.log-in-sign-up {
+    display: flex;
+    justify-content: flex-end;
+
+    width: 10%;
+    margin-right: 2.625rem;
+    gap: 2.375rem;
+}
+
+.log-in-sign-up > button {
+    font-weight: bold;
+    color: var(--text-white);
+
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+
+    border: none;
+    background: none;
+    text-decoration: none;
+}
+
+.signup-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 58.375rem;
+    height: 423px;
+
+    background-color: var(--darker-dark);
+
+    border-radius: 25px;
+    border: none;
+}
+
+dialog::backdrop {
+    background-color: #000000;
+    opacity: 0.75;
+}
+
+dialog > .container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 95%;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--text-white);
+
+    background-color: var(--brand-blue);
+    height: 53px;
+    padding: 0px 0.633rem 0px 0.633rem;
+
+    border-radius: 5px;
+}
