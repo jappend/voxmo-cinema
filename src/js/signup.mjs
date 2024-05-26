@@ -29,32 +29,43 @@ closeButton.addEventListener('click', (e) => {
     signupModal.close();
 })
 
-// Proceed Modal
-proceed.addEventListener('click', (e) => {
-    e.preventDefault();
+function checkStep() {
 
     if (modalStep === 1) {
+        stepOne.classList.remove('invisible');
+        stepTwo.classList.add('invisible');
+    } 
+    
+    if (modalStep === 2) {
         stepOne.classList.add('invisible');
         stepTwo.classList.remove('invisible');
-        modalStep++;
-    } else if (modalStep === 2) {
+        stepThree.classList.add('invisible');
+    } 
+    
+    if (modalStep === 3) {
         stepTwo.classList.add('invisible');
         stepThree.classList.remove('invisible');
-        modalStep++;
-    } else if (modalStep === 3) {
+        stepFour.classList.add('invisible');
+    } 
+    
+    if (modalStep === 4) {
         stepThree.classList.add('invisible');
         stepFour.classList.remove('invisible');
-        modalStep++;
-    } else if (modalStep === 4) {
-        modalStep++;
+    } 
+
+    if (modalStep === 5) {
         console.log("creating...")
+
         cinemaGrader.post('/users', {
             name: nameInput.value,
             email: emailInput.value,
             password: passwordInput.value,
             birthday: birthdayInput.value 
         })
-        .finally(function () {
+        .catch((error) => {
+            console.log(error)
+        })
+        .finally(() => {
             modalStep = 1;
             stepFour.classList.add('invisible');
             stepOne.classList.remove('invisible')
@@ -66,27 +77,21 @@ proceed.addEventListener('click', (e) => {
 
             signupModal.close();
         })
-        .catch(function(error) {
-            console.log(error)
-        })
     }
+};
+
+// Proceed Modal
+proceed.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    modalStep++;
+    checkStep();
 })
 
 // Goback Modal
 goback.addEventListener('click', (e) => {
     e.preventDefault();
 
-    if (modalStep === 2) {
-        stepOne.classList.remove('invisible');
-        stepTwo.classList.add('invisible');
-        modalStep--;
-    } else if (modalStep === 3) {
-        stepThree.classList.add('invisible');
-        stepTwo.classList.remove('invisible');
-        modalStep--;
-    } else if (modalStep === 4) {
-        stepFour.classList.add('invisible');
-        stepThree.classList.remove('invisible');
-        modalStep--;
-    }
+    modalStep--;
+    checkStep();
 })
