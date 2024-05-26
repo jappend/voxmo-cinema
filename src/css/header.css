@@ -266,4 +266,12 @@ header {
     outline: none;
 
     cursor: pointer;
+    transition: 0.5s;
+}
+
+.navbutton:disabled {
+    opacity: 0.5;
+
+    transition: 0.5s;
+    cursor: not-allowed;
 }

@@ -32,11 +32,13 @@ closeButton.addEventListener('click', (e) => {
 function checkStep() {
 
     if (modalStep === 1) {
+        goback.disabled = true;
         stepOne.classList.remove('invisible');
         stepTwo.classList.add('invisible');
     } 
     
     if (modalStep === 2) {
+        goback.disabled = false;
         stepOne.classList.add('invisible');
         stepTwo.classList.remove('invisible');
         stepThree.classList.add('invisible');
@@ -54,18 +56,22 @@ function checkStep() {
     } 
 
     if (modalStep === 5) {
+        proceed.disabled = true;
+        goback.disabled = true;
         console.log("creating...")
 
-        cinemaGrader.post('/users', {
-            name: nameInput.value,
-            email: emailInput.value,
-            password: passwordInput.value,
-            birthday: birthdayInput.value 
-        })
-        .catch((error) => {
+        let response;
+
+        try {
+            response = cinemaGrader.post('/users', {
+                name: nameInput.value,
+                email: emailInput.value,
+                password: passwordInput.value,
+                birthday: birthdayInput.value 
+            })
+        } catch(error) {
             console.log(error)
-        })
-        .finally(() => {
+        } finally {
             modalStep = 1;
             stepFour.classList.add('invisible');
             stepOne.classList.remove('invisible')
@@ -76,7 +82,7 @@ function checkStep() {
             birthdayInput.value = null
 
             signupModal.close();
-        })
+        }
     }
 };
 
