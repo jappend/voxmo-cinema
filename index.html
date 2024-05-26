@@ -13,7 +13,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <!-- Javascript -->
-    <script src="./src/js/signup.js" defer></script>
+    <script type="module" src="./src/js/signup.mjs" defer></script>
+    <!-- CDNs -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <header>
@@ -41,11 +43,11 @@
     <dialog id="signup-dialog">
         <form class="dialog-container" id="signup-form">
             <div class="right-align">
-                <button id="right-dialog-button">
+                <button id="right-dialog-button" type="button">
                     <img src="./src/svgs/xmark-solid.svg" alt="close button" class="close-icon icon">
                 </div>
             </div>
-            <div id="dialog-step-one dialog-content">
+            <div id="dialog-step-one">
                 <div class="center">
                     <div class="title-center">
                         <div class="title">VOXMO</div>
@@ -57,16 +59,61 @@
                             <input type="text" name="First name" id="first-name" placeholder="Christopher" class="signup-input">
                         </div>
                     </div>
-                    <div class="dialog-nav">
-                        <button class="navbutton">
-                            <img src="./src/svgs/chevron-left-solid.svg" alt="go back" class="modal-nav-icon icon">
-                        </button>
-                        <div class="separator"></div>
-                        <button class="navbutton">
-                            <img src="./src/svgs/chevron-right-solid.svg" alt="proceed" class="modal-nav-icon icon">
-                        </button>
+                </div>
+            </div>
+
+            <div id="dialog-step-two" class="invisible">
+                <div class="center">
+                    <div class="title-center">
+                        <div class="title">VOXMO</div>
+                    </div>
+                    <div class="content">
+                        <h1>Now, we will need your email.</h1>
+                        <div class="input-box">
+                            <label for="email" class="signup-label">Email</label>
+                            <input type="text" name="email" id="email" placeholder="chrisnolan123@email.com" class="signup-input">
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <div id="dialog-step-three" class="invisible">
+                <div class="center">
+                    <div class="title-center">
+                        <div class="title">VOXMO</div>
+                    </div>
+                    <div class="content">
+                        <h1>Create a password.</h1>
+                        <div class="input-box">
+                            <label for="password" class="signup-label">Password</label>
+                            <input type="password" name="password" id="password" class="signup-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dialog-step-four" class="invisible">
+                <div class="center">
+                    <div class="title-center">
+                        <div class="title">VOXMO</div>
+                    </div>
+                    <div class="content">
+                        <h1>Finally, your birthdate.</h1>
+                        <div class="input-box">
+                            <label for="birthday-input" class="signup-label">Birthday</label>
+                            <input type="date" name="date" id="birthday-input" class="signup-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dialog-nav">
+                <button class="navbutton" id="signup-dialog-goback" type="button">
+                    <img src="./src/svgs/chevron-left-solid.svg" alt="go back" class="modal-nav-icon icon">
+                </button>
+                <div class="separator"></div>
+                <button class="navbutton" id="signup-dialog-proceed" type="button">
+                    <img src="./src/svgs/chevron-right-solid.svg" alt="proceed" class="modal-nav-icon icon">
+                </button>
             </div>
         </form>
     </dialog>
