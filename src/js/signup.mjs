@@ -33,6 +33,7 @@ function checkStep() {
 
     if (modalStep === 1) {
         goback.disabled = true;
+        proceed.disabled = false;
         stepOne.classList.remove('invisible');
         stepTwo.classList.add('invisible');
     } 
