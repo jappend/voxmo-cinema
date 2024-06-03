@@ -1,12 +1,12 @@
 /* SVGs */
 
-.search-icon {
+.searchbar > img {
     height: 24px;
     width: 24px;
     margin-right: 1.5rem;
 }
 
-.arrow-down {
+.dropdown-menu > img {
     height: 15px;
     width: 15px;
     margin-left: 0.4375rem;
@@ -22,6 +22,8 @@
     height: 24px;
     width: 24px;
 }
+
+/* General Header */
 
 header {
     display: flex;
@@ -52,6 +54,8 @@ header {
     background-color: var(--brand-blue);
 }
 
+/* Search Bar */
+
 .searchbar {
     display: flex;
     flex-direction: row;
@@ -67,11 +71,7 @@ header {
     background-color: var(--white-minus);
 }
 
-::placeholder {
-    color: var(--grey);
-}
-
-#search-input {
+.searchbar > form > input {
     font-size: 1.25rem;
     font-weight: 600;
     font-family: 'Inter', sans-serif;
@@ -84,6 +84,10 @@ header {
     border: none;
     outline: none;
     height: 3rem;
+}
+
+.searchbar > form > input::placeholder {
+    color: var(--grey);
 }
 
 .vertical-header-rule {
@@ -102,6 +106,8 @@ header {
 
     margin: 0px 2rem 0px 2rem;
 }
+
+/* Log in - Sign up */
 
 .log-in-sign-up {
     display: flex;
@@ -124,7 +130,9 @@ header {
     text-decoration: none;
 }
 
-#signup-dialog {
+/* Sign up - DIALOG */
+
+.signup-dialog {
     height: 423px;
     width: 58.375rem;
 
@@ -133,12 +141,12 @@ header {
     border-radius: 25px;
 }
 
-#signup-dialog::backdrop {
+.signup-dialog::backdrop {
     background-color: black;
     opacity: 0.5;
 }
 
-.dialog-container {
+.signup-dialog > form {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -147,7 +155,7 @@ header {
     height: 100%;
 }
 
-.right-align {
+.signup-dialog__right-align {
     display: flex;
     align-items: flex-end;
 
@@ -155,7 +163,7 @@ header {
     width: 100%;
 }
 
-#right-dialog-button {
+.signup-dialog__right-align > button {
     background: none;
     border: none;
     cursor: pointer;
@@ -165,12 +173,14 @@ header {
 
 }
 
-.title-center {
+.signup-dialog__title-center {
     display: flex;
     justify-content: center;
+
+    margin-top: 2rem;
 }
 
-.center {
+.signup-dialog__dialog-step-one > div {
     display: flex;
     flex-direction: column;
 
@@ -180,7 +190,7 @@ header {
     justify-content: center;
 }
 
-.title {
+.signup-dialog__title-center > div {
     color: var(--text-white);
     font-weight: bold;
 
@@ -191,7 +201,10 @@ header {
     border-radius: 5px;
 }
 
-.center > .content > h1 {
+.signup-dialog__content > h1 {
+    display: flex;
+    justify-content: center;
+
     font-weight: 600;
     margin-top: 2rem;
 
@@ -208,7 +221,7 @@ header {
     height: 100%;
 }
 
-.input-box {
+.signup-dialog__content > div {
     display: flex;
     align-items: center;
     
@@ -222,7 +235,7 @@ header {
     margin-top: 1.9375rem;
 }
 
-.signup-label {
+.signup-dialog__inputs > label {
     display: flex;
     align-items: flex-start;
 
@@ -233,11 +246,12 @@ header {
     color: var(--grey);
 }
 
-.signup-input {
+.signup-dialog__inputs > input {
     font-size: 1.5rem;
     height: 60px;
     width: 46.3125rem;
     padding-left: 1.125rem;
+    padding-right: 1.125rem;
 
     font-weight: 600;
     color: var(--darker-dark);
@@ -247,16 +261,17 @@ header {
     outline: none;
 }
 
-.dialog-nav {
+.signup-dialog__dialog-nav {
     display: flex;
     width: 46.3125rem;
     margin-top: 0.9375rem;
     flex-direction: row;
 
     justify-content: center;
+    margin-bottom: 2rem;
 }
 
-.dialog-nav > .separator {
+.signup-dialog__dialog-nav > .separator {
     width: 46.3125rem;
 }
 

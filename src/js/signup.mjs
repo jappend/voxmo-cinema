@@ -7,15 +7,15 @@ const closeButton = document.getElementById('right-dialog-button');
 const proceed = document.getElementById('signup-dialog-proceed');
 const goback = document.getElementById('signup-dialog-goback');
 
-const stepOne = document.getElementById('dialog-step-one');
-const stepTwo = document.getElementById('dialog-step-two');
-const stepThree = document.getElementById('dialog-step-three');
-const stepFour = document.getElementById('dialog-step-four');
+const stepOne = document.getElementById('signup-dialog__dialog-step-one');
+const stepTwo = document.getElementById('signup-dialog__dialog-step-two');
+const stepThree = document.getElementById('signup-dialog__dialog-step-three');
+const stepFour = document.getElementById('signup-dialog__dialog-step-four');
 
-const nameInput = document.getElementById('first-name');
-const emailInput = document.getElementById('email');
-const passwordInput = document.getElementById('password');
-const birthdayInput = document.getElementById('birthday-input');
+const nameInput = document.getElementById('signup-input-first-name');
+const emailInput = document.getElementById('signup-input-email');
+const passwordInput = document.getElementById('signup-input-password');
+const birthdayInput = document.getElementById('signup-input-birthdate');
 
 let modalStep = 1;
 
@@ -33,7 +33,6 @@ function checkStep() {
 
     if (modalStep === 1) {
         goback.disabled = true;
-        proceed.disabled = false;
         stepOne.classList.remove('invisible');
         stepTwo.classList.add('invisible');
     } 
@@ -83,6 +82,7 @@ function checkStep() {
             birthdayInput.value = null
 
             signupModal.close();
+            proceed.disabled = false;
         }
     }
 };

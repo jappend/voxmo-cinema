@@ -22,91 +22,94 @@
         <div id="titleicon">V</div>
         <div class="searchbar">
             <form>
-                <input type="text" placeholder="Search VOXMO..." id="search-input">
+                <input type="text" placeholder="Search VOXMO..." id="searchbar-input">
             </form>
-        <img src="./src/svgs/magnifying-glass-solid.svg" alt="search icon" class="search-icon icon">
+            <img src="./src/svgs/magnifying-glass-solid.svg" alt="search icon" >
         </div>
         <div class="dropdown-menu">
             Menu 
-            <img src="./src/svgs/chevron-down-solid.svg" alt="arrow down" class="arrow-down icon">
+            <img src="./src/svgs/chevron-down-solid.svg" alt="arrow down">
         </div>
        <div class="vertical-header-rule"></div> 
        <div class="dropdown-menu">
             EN 
-            <img src="./src/svgs/chevron-down-solid.svg" alt="arrow down" class="arrow-down icon">
+            <img src="./src/svgs/chevron-down-solid.svg" alt="arrow down">
        </div>
        <div class="log-in-sign-up">
             <button id="signup-button">Sign up</button>
             <button id="login-button">Log in</button>
        </div>
     </header>
-    <dialog id="signup-dialog">
-        <form class="dialog-container" id="signup-form">
-            <div class="right-align">
+
+    <dialog id="signup-dialog" class="signup-dialog">
+        <form id="signup-form">
+            <div class="signup-dialog__right-align">
                 <button id="right-dialog-button" type="button">
                     <img src="./src/svgs/xmark-solid.svg" alt="close button" class="close-icon icon">
                 </div>
             </div>
-            <div id="dialog-step-one">
-                <div class="center">
-                    <div class="title-center">
-                        <div class="title">VOXMO</div>
+
+            <div id="signup-dialog__dialog-step-one">
+                <div>
+                    <div class="signup-dialog__title-center">
+                        <div>VOXMO</div>
                     </div>
-                    <div class="content">
+                    <div class="signup-dialog__content">
                         <h1>Firstly, tell us your first name.</h1>
-                        <div class="input-box">
-                            <label for="first-name" class="signup-label">First Name</label>
-                            <input type="text" name="First name" id="first-name" placeholder="Christopher" class="signup-input">
+                        <div class="signup-dialog__inputs">
+                            <label for="signup-input-first-name">First Name</label>
+                            <input type="text" id="signup-input-first-name" placeholder="Christopher">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="dialog-step-two" class="invisible">
-                <div class="center">
-                    <div class="title-center">
-                        <div class="title">VOXMO</div>
+            <div id="signup-dialog__dialog-step-two" class="invisible">
+                <div>
+                    <div class="signup-dialog__title-center">
+                        <div>VOXMO</div>
                     </div>
-                    <div class="content">
-                        <h1>Now, we will need your email.</h1>
-                        <div class="input-box">
-                            <label for="email" class="signup-label">Email</label>
-                            <input type="text" name="email" id="email" placeholder="chrisnolan123@email.com" class="signup-input">
+                    <div class="signup-dialog__content">
+                        <h1>Now, assign an email to your account.</h1>
+                        <div class="signup-dialog__inputs">
+                            <label for="signup-input-email">Email</label>
+                            <input type="text" id="signup-input-email" placeholder="chrisnolan123@email.com">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="dialog-step-three" class="invisible">
-                <div class="center">
-                    <div class="title-center">
-                        <div class="title">VOXMO</div>
+            <div id="signup-dialog__dialog-step-three" class="invisible">
+                <div>
+                    <div class="signup-dialog__title-center">
+                        <div>VOXMO</div>
                     </div>
-                    <div class="content">
-                        <h1>Create a password.</h1>
-                        <div class="input-box">
-                            <label for="password" class="signup-label">Password</label>
-                            <input type="password" name="password" id="password" class="signup-input">
+                    <div class="signup-dialog__content">
+                        <h1>Make your account secure with a password.</h1>
+                        <div class="signup-dialog__inputs">
+                            <label for="signup-input-password">Password</label>
+                            <input type="password" id="signup-input-password">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="dialog-step-four" class="invisible">
-                <div class="center">
-                    <div class="title-center">
-                        <div class="title">VOXMO</div>
+            <div id="signup-dialog__dialog-step-four" class="invisible">
+                <div>
+                    <div class="signup-dialog__title-center">
+                        <div>VOXMO</div>
                     </div>
-                    <div class="content">
-                        <h1>Finally, your birthdate.</h1>
-                        <div class="input-box">
-                            <label for="birthday-input" class="signup-label">Birthday</label>
-                            <input type="date" name="date" id="birthday-input" class="signup-input">
+                    <div class="signup-dialog__content">
+                        <h1>Finally, tell us your birthdate.</h1>
+                        <div class="signup-dialog__inputs">
+                            <label for="signup-input-birthdate">Birthdate</label>
+                            <input type="date" id="signup-input-birthdate">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="dialog-nav">
+            
+            <div class="signup-dialog__dialog-nav">
                 <button class="navbutton" id="signup-dialog-goback" type="button" disabled>
                     <img src="./src/svgs/chevron-left-solid.svg" alt="go back" class="modal-nav-icon icon">
                 </button>
