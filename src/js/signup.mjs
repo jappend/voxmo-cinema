@@ -13,8 +13,12 @@ const stepThree = document.getElementById('signup-dialog__dialog-step-three');
 const stepFour = document.getElementById('signup-dialog__dialog-step-four');
 
 const nameInput = document.getElementById('signup-input-first-name');
+
 const emailInput = document.getElementById('signup-input-email');
+const emailError = document.getElementById('email-error');
+
 const passwordInput = document.getElementById('signup-input-password');
+
 const birthdayInput = document.getElementById('signup-input-birthdate');
 
 let modalStep = 1;
@@ -28,6 +32,16 @@ closeButton.addEventListener('click', (e) => {
     e.preventDefault();
     signupModal.close();
 })
+
+function checkEmail(email) {
+    const emailRegex = new RegExp("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$", "g") 
+
+    if (email.match(emailRegex)) {
+        return true;
+    }
+
+    return false;
+}
 
 function checkStep() {
 
@@ -45,9 +59,21 @@ function checkStep() {
     } 
     
     if (modalStep === 3) {
-        stepTwo.classList.add('invisible');
-        stepThree.classList.remove('invisible');
-        stepFour.classList.add('invisible');
+        if (checkEmail(emailInput.value)) {
+            stepTwo.classList.add('invisible');
+            stepThree.classList.remove('invisible');
+            stepFour.classList.add('invisible');
+        } else {
+            modalStep = 2;
+
+            emailInput.classList.add('input--error');
+            emailError.classList.remove('invisible');
+
+            setTimeout(() => {
+                emailInput.classList.remove('input--error');
+                emailError.classList.add('invisible');
+            }, "3000")
+        }
     } 
     
     if (modalStep === 4) {

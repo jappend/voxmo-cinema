@@ -261,6 +261,15 @@ header {
     outline: none;
 }
 
+.signup-dialog__inputs > p {
+    width: 100%;
+    color: rgb(187, 19, 19);
+}
+
+.input--error {
+    border: rgb(187, 19, 19) 3px solid;
+}
+
 .signup-dialog__dialog-nav {
     display: flex;
     width: 46.3125rem;
