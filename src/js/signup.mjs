@@ -19,9 +19,31 @@ const emailError = document.getElementById('email-error');
 
 const passwordInput = document.getElementById('signup-input-password');
 
+const passwordLengthVal = document.getElementById('password-val-1');
+const passwordLengthValIcon = document.getElementById('password-val-1-icon');
+
+const passwordSymbolVal = document.getElementById('password-val-2');
+const passwordSymbolValIcon = document.getElementById('password-val-2-icon');
+
+const passwordUppercaseVal = document.getElementById('password-val-3');
+const passwordUppercaseValIcon = document.getElementById('password-val-3-icon');
+
+const passwordLowercaseVal = document.getElementById('password-val-4');
+const passwordLowercaseValIcon = document.getElementById('password-val-4-icon');
+
+const passwordNumberVal = document.getElementById('password-val-5');
+const passwordNumberValIcon = document.getElementById('password-val-5-icon');
+
 const birthdayInput = document.getElementById('signup-input-birthdate');
 
 let modalStep = 1;
+let passwordComplete = false;
+
+const emailRegex = new RegExp("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$", "g") 
+const symbolRegex = new RegExp("[^\\w\\s]", "g");
+const uppercaseRegex = new RegExp("[A-Z]", "g");
+const lowercaseRegex = new RegExp("[a-z]", "g");
+const numberRegex = new RegExp("[\\d]", "g");
 
 signupButton.addEventListener('click', (e) => {
     e.preventDefault();
@@ -33,14 +55,88 @@ closeButton.addEventListener('click', (e) => {
     signupModal.close();
 })
 
-function checkEmail(email) {
-    const emailRegex = new RegExp("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$", "g") 
+function checkPassword(password) {
 
-    if (email.match(emailRegex)) {
-        return true;
+    if (password.length > 7) {
+        passwordLengthVal.classList.remove('signup-dialog--text-error');
+        passwordLengthVal.classList.add('signup-dialog--text-right');
+
+        passwordLengthValIcon.src = './src/svgs/check-solid.svg';
+        passwordLengthValIcon.alt = 'check';
+    } else {
+        passwordLengthVal.classList.add('signup-dialog--text-error');
+        passwordLengthVal.classList.remove('signup-dialog--text-right');
+
+        passwordLengthValIcon.src = './src/svgs/xmark-solid-wrong.svg';
+        passwordLengthValIcon.alt = 'wrong';
     }
 
-    return false;
+    if (password.match(symbolRegex)) {
+        passwordSymbolVal.classList.remove('signup-dialog--text-error');
+        passwordSymbolVal.classList.add('signup-dialog--text-right');
+
+        passwordSymbolValIcon.src = './src/svgs/check-solid.svg';
+        passwordSymbolValIcon.alt = 'check';
+    } else {
+        passwordSymbolVal.classList.add('signup-dialog--text-error');
+        passwordSymbolVal.classList.remove('signup-dialog--text-right');
+
+        passwordSymbolValIcon.src = './src/svgs/xmark-solid-wrong.svg';
+        passwordSymbolValIcon.alt = 'wrong';
+    }
+
+    if (password.match(uppercaseRegex)) {
+        passwordUppercaseVal.classList.remove('signup-dialog--text-error');
+        passwordUppercaseVal.classList.add('signup-dialog--text-right');
+
+        passwordUppercaseValIcon.src = './src/svgs/check-solid.svg';
+        passwordUppercaseValIcon.alt = 'check';
+    } else {
+        passwordUppercaseVal.classList.add('signup-dialog--text-error');
+        passwordUppercaseVal.classList.remove('signup-dialog--text-right');
+
+        passwordUppercaseValIcon.src = './src/svgs/xmark-solid-wrong.svg';
+        passwordUppercaseValIcon.alt = 'wrong';
+    }
+
+    if (password.match(lowercaseRegex)) {
+        passwordLowercaseVal.classList.remove('signup-dialog--text-error');
+        passwordLowercaseVal.classList.add('signup-dialog--text-right');
+
+        passwordLowercaseValIcon.src = './src/svgs/check-solid.svg';
+        passwordLowercaseValIcon.alt = 'check';
+    } else {
+        passwordLowercaseVal.classList.add('signup-dialog--text-error');
+        passwordLowercaseVal.classList.remove('signup-dialog--text-right');
+
+        passwordLowercaseValIcon.src = './src/svgs/xmark-solid-wrong.svg';
+        passwordLowercaseValIcon.alt = 'wrong';
+    }
+
+    if (password.match(numberRegex)) {
+        passwordNumberVal.classList.remove('signup-dialog--text-error');
+        passwordNumberVal.classList.add('signup-dialog--text-right');
+
+        passwordNumberValIcon.src = './src/svgs/check-solid.svg';
+        passwordNumberValIcon.alt = 'check';
+    } else {
+        passwordNumberVal.classList.add('signup-dialog--text-error');
+        passwordNumberVal.classList.remove('signup-dialog--text-right');
+
+        passwordNumberValIcon.src = './src/svgs/xmark-solid-wrong.svg';
+    }
+
+    if (
+        password.length > 7 
+        && password.match(symbolRegex) 
+        && password.match(uppercaseRegex) 
+        && password.match(lowercaseRegex) 
+        && password.match(numberRegex)
+    ) {
+        passwordComplete = true;
+    } else {
+        passwordComplete = false;
+    }
 }
 
 function checkStep() {
@@ -52,6 +148,7 @@ function checkStep() {
     } 
     
     if (modalStep === 2) {
+        signupModal.style.height = '423px';
         goback.disabled = false;
         stepOne.classList.add('invisible');
         stepTwo.classList.remove('invisible');
@@ -59,10 +156,12 @@ function checkStep() {
     } 
     
     if (modalStep === 3) {
-        if (checkEmail(emailInput.value)) {
+        if (emailInput.value.match(emailRegex)) {
             stepTwo.classList.add('invisible');
             stepThree.classList.remove('invisible');
             stepFour.classList.add('invisible');
+
+            signupModal.style.height = '694px';
         } else {
             modalStep = 2;
 
@@ -77,8 +176,13 @@ function checkStep() {
     } 
     
     if (modalStep === 4) {
-        stepThree.classList.add('invisible');
-        stepFour.classList.remove('invisible');
+        if (passwordComplete) {
+            signupModal.style.height = '423px';
+            stepThree.classList.add('invisible');
+            stepFour.classList.remove('invisible');
+        } else {
+            modalStep = 3;
+        }
     } 
 
     if (modalStep === 5) {
@@ -127,4 +231,11 @@ goback.addEventListener('click', (e) => {
 
     modalStep--;
     checkStep();
+})
+
+// Password Input
+passwordInput.addEventListener('input', (e) => {
+    e.preventDefault();
+
+    checkPassword(passwordInput.value)
 })

@@ -1,5 +1,9 @@
 /* SVGs */
 
+.signup-dialog__password-validator > span > img {
+    height: 27px;
+    width: 27px;
+}
 .searchbar > img {
     height: 24px;
     width: 24px;
@@ -263,11 +267,37 @@ header {
 
 .signup-dialog__inputs > p {
     width: 100%;
-    color: rgb(187, 19, 19);
+    color: var(--error);
 }
 
 .input--error {
-    border: rgb(187, 19, 19) 3px solid;
+    border: var(--error) 3px solid;
+}
+
+.signup-dialog--text-error {
+    display: flex;
+    align-items: center;
+
+    gap: 0.75rem;
+
+    width: 100%;
+    color: var(--error);
+}
+
+.signup-dialog--text-right {
+    display: flex;
+    align-items: center;
+
+    gap: 0.75rem;
+
+    width: 100%;
+    color: var(--right);
+}
+
+.signup-dialog__password-validator > span {
+    font-size: 1.5rem;
+
+    margin-bottom: 1.125rem;
 }
 
 .signup-dialog__dialog-nav {
