@@ -13,6 +13,7 @@ const stepThree = document.getElementById('signup-dialog__dialog-step-three');
 const stepFour = document.getElementById('signup-dialog__dialog-step-four');
 
 const nameInput = document.getElementById('signup-input-first-name');
+const nameError = document.getElementById('firstname-error');
 
 const emailInput = document.getElementById('signup-input-email');
 const emailError = document.getElementById('email-error');
@@ -148,11 +149,23 @@ function checkStep() {
     } 
     
     if (modalStep === 2) {
-        signupModal.style.height = '423px';
-        goback.disabled = false;
-        stepOne.classList.add('invisible');
-        stepTwo.classList.remove('invisible');
-        stepThree.classList.add('invisible');
+        if (nameInput.value.replaceAll(' ', '') !== "") {
+            signupModal.style.height = '423px';
+            goback.disabled = false;
+            stepOne.classList.add('invisible');
+            stepTwo.classList.remove('invisible');
+            stepThree.classList.add('invisible');
+        } else {
+            modalStep = 1;
+
+            nameInput.classList.add('input--error');
+            nameError.classList.remove('invisible');
+
+            setTimeout(() => {
+                nameInput.classList.remove('input--error');
+                nameError.classList.add('invisible');
+            }, "3000")
+        }
     } 
     
     if (modalStep === 3) {
