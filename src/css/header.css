@@ -132,6 +132,12 @@ header {
     border: none;
     background: none;
     text-decoration: none;
+    transition: 0.5s;
+}
+
+.log-in-sign-up > button:hover {
+    color: var(--grey);
+    font-weight: 900;
 }
 
 /* Sign up - DIALOG */
