@@ -42,13 +42,10 @@
     </header>
 
     <dialog id="signup-dialog" class="signup-dialog">
+        <button id="close-signup-button" type="button">
+            <img src="./src/svgs/xmark-solid.svg" alt="close button" class="reg-icon">
+        </button>
         <form id="signup-form">
-            <div class="signup-dialog__right-align">
-                <button id="right-dialog-button" type="button">
-                    <img src="./src/svgs/xmark-solid.svg" alt="close button" class="close-icon icon">
-                </div>
-            </div>
-
             <div id="dialog-step-one">
                 <div>
                     <div class="signup-dialog__title-center">
@@ -144,7 +141,7 @@
                         <h1>Make sure all your information is correct:</h1>
                         <div class="signup-dialog__confirmation-inputs">
                             <div>
-                                <span>First Name:</span>
+                                <span>Name:</span>
                                 <p id="confirmation-name">name</p>
                             </div>
                             <div>
@@ -155,11 +152,10 @@
                                 <span>Birthdate:</span>
                                 <p id="confirmation-birthdate">0000-00-00</p>
                             </div>
-                            <div>
+                            <div class="signup-dialog__confirmation-buttons">
                                 <button type="button" id="return-button-signup">
                                     <img src="./src/svgs/chevron-left-solid.svg" alt="go back" class="modal-nav-icon icon">
                                 </button>
-                                <div class="separator"></div>
                                 <button type="submit">
                                     <img src="./src/svgs/check-solid-text-white.svg" id="submit-image" alt="confirm">
                                 </button>
@@ -170,12 +166,11 @@
             </div>
             
             <nav id="navigation-bottom-signup">
-                <button class="navbutton" id="signup-dialog-goback" type="button" disabled>
-                    <img src="./src/svgs/chevron-left-solid.svg" alt="go back" class="modal-nav-icon icon">
+                <button id="signup-dialog-goback" type="button" disabled>
+                    <img src="./src/svgs/chevron-left-solid.svg" alt="go back" class="reg-icon">
                 </button>
-                <div class="separator"></div>
-                <button class="navbutton" id="signup-dialog-proceed" type="button">
-                    <img src="./src/svgs/chevron-right-solid.svg" alt="proceed" class="modal-nav-icon icon">
+                <button id="signup-dialog-proceed" type="button">
+                    <img src="./src/svgs/chevron-right-solid.svg" alt="proceed" class="reg-icon">
                 </button>
             </nav>
         </form>

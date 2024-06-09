@@ -3,7 +3,7 @@ import { cinemaGrader } from "../instances/cinemaGrader.mjs";
 const signupForm = document.getElementById('signup-form');
 const signupButton = document.getElementById('signup-button');
 const signupModal = document.getElementById('signup-dialog');
-const closeButton = document.getElementById('right-dialog-button');
+const closeButton = document.getElementById('close-signup-button');
 
 const proceed = document.getElementById('signup-dialog-proceed');
 const goback = document.getElementById('signup-dialog-goback');
@@ -168,6 +168,8 @@ function checkStep() {
     if (modalStep === 2) {
         if (nameInput.value.replaceAll(' ', '') !== "") {
             signupModal.style.height = '423px';
+            closeButton.style.top = '20%';
+
             goback.disabled = false;
             stepOne.classList.add('invisible');
             stepTwo.classList.remove('invisible');
@@ -194,6 +196,7 @@ function checkStep() {
             stepFour.classList.add('invisible');
 
             signupModal.style.height = '694px';
+            closeButton.style.top = '11%';
         } else {
             modalStep = 2;
 
@@ -212,6 +215,9 @@ function checkStep() {
         navigation.classList.remove('invisible');
         if (passwordComplete) {
             signupModal.style.height = '423px';
+
+            closeButton.style.top = '20%';
+
             stepThree.classList.add('invisible');
             stepFour.classList.remove('invisible');
             stepFive.classList.add('invisible');
