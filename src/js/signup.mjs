@@ -227,7 +227,11 @@ function checkStep() {
     } 
 
     if (modalStep === 5) {
-        if (birthdayInput.value != "") {
+        let insertedDate = new Date(birthdayInput.value);
+        let todaysDate = new Date();
+        todaysDate.setHours(0, 0, 0, 0);
+
+        if (birthdayInput.value != "" && insertedDate < todaysDate) {
             console.log(birthdayInput.value)
             const confName = document.getElementById('confirmation-name');
             const confEmail = document.getElementById('confirmation-email');
