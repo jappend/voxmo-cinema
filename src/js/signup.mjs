@@ -208,19 +208,33 @@ function checkStep() {
     } 
 
     if (modalStep === 5) {
-        const confName = document.getElementById('confirmation-name');
-        const confEmail = document.getElementById('confirmation-email');
-        const confBirthdate = document.getElementById('confirmation-birthdate');
+        if (birthdayInput.value != "") {
+            console.log(birthdayInput.value)
+            const confName = document.getElementById('confirmation-name');
+            const confEmail = document.getElementById('confirmation-email');
+            const confBirthdate = document.getElementById('confirmation-birthdate');
 
-        confName.innerText = nameInput.value;
-        confEmail.innerText = emailInput.value;
-        confBirthdate.innerText = birthdayInput.value;
+            confName.innerText = nameInput.value;
+            confEmail.innerText = emailInput.value;
+            confBirthdate.innerText = birthdayInput.value;
 
-        navigation.classList.remove('signup-dialog__dialog-nav');
-        navigation.classList.add('invisible');
+            navigation.classList.remove('signup-dialog__dialog-nav');
+            navigation.classList.add('invisible');
 
-        stepFive.classList.remove('invisible');
-        stepFour.classList.add('invisible');
+            stepFive.classList.remove('invisible');
+            stepFour.classList.add('invisible');
+        } else {
+            modalStep = 4;
+            const birthdateError = document.getElementById('birthdate-error');
+
+            birthdayInput.classList.add('input--error');
+            birthdateError.classList.remove('invisible');
+
+            setTimeout(() => {
+                birthdayInput.classList.remove('input--error');
+                birthdateError.classList.add('invisible');
+            }, "3000")
+        }
     }
 };
 
