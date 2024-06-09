@@ -5,3 +5,16 @@ body {
 .invisible {
     display: none;
 }
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.loading-rotation {
+    animation: rotation 1s infinite ease;
+}

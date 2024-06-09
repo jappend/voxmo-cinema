@@ -44,6 +44,19 @@ const navigation = document.getElementById('navigation-bottom-signup');
 
 let modalStep = 1;
 let passwordComplete = false;
+let isLoading = false;
+
+function detectLoading() {
+    const submitIcon = document.getElementById('submit-image');
+
+    if (isLoading === true) {
+        submitIcon.classList.add('loading-rotation');
+        submitIcon.src = './src/svgs/spinner-solid.svg';
+    } else {
+        submitIcon.classList.remove('loading-rotation');
+        submitIcon.src = './src/svgs/check-solid-text-white.svg';
+    }
+}
 
 
 signupButton.addEventListener('click', (e) => {
@@ -269,17 +282,18 @@ passwordInput.addEventListener('input', (e) => {
 })
 
 // On Form Submit
-signupForm.addEventListener('submit', (e) => {
-    e.preventDefault();
 
+async function submitSignup() {
     proceed.disabled = true;
     goback.disabled = true;
-    console.log("creating...")
 
     let response;
 
+    isLoading = true;
+    detectLoading();
+
     try {
-        response = cinemaGrader.post('/users', {
+        response = await cinemaGrader.post('/users', {
             name: nameInput.value,
             email: emailInput.value,
             password: passwordInput.value,
@@ -288,16 +302,29 @@ signupForm.addEventListener('submit', (e) => {
     } catch(error) {
         console.log(error)
     } finally {
+        isLoading = false;
+        detectLoading();
+
         modalStep = 1;
-        stepFour.classList.add('invisible');
+        stepFive.classList.add('invisible');
         stepOne.classList.remove('invisible')
+
+        navigation.classList.add('signup-dialog__dialog-nav');
+        navigation.classList.remove('invisible');
 
         nameInput.value = ""
         emailInput.value = ""
         passwordInput.value = ""
         birthdayInput.value = null
 
+        checkPassword(passwordInput.value);
         signupModal.close();
         proceed.disabled = false;
     }
+}
+
+signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    submitSignup();
 })
