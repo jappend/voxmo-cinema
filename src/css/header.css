@@ -1,5 +1,10 @@
 /* SVGs */
 
+.signup-dialog__confirmation-inputs > div > button > img {
+    height: 27px;
+    width: 27px;
+}
+
 .signup-dialog__password-validator > span > img {
     height: 27px;
     width: 27px;
@@ -270,6 +275,43 @@ header {
     color: var(--error);
 }
 
+.signup-dialog__confirmation-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 2rem;
+}
+
+.signup-dialog__confirmation-inputs > div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    color: var(--text-white);
+    gap: 1rem;
+}
+
+.signup-dialog__confirmation-inputs > div > span {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.signup-dialog__confirmation-inputs > div > p {
+    font-size: 2rem;
+}
+
+.signup-dialog__confirmation-inputs > div > button {
+    display: flex;
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+}  
+
 .input--error {
     border: var(--error) 3px solid;
 }
@@ -300,7 +342,7 @@ header {
     margin-bottom: 1.125rem;
 }
 
-.signup-dialog__dialog-nav {
+form > nav {
     display: flex;
     width: 46.3125rem;
     margin-top: 0.9375rem;
@@ -310,7 +352,8 @@ header {
     margin-bottom: 2rem;
 }
 
-.signup-dialog__dialog-nav > .separator {
+.separator {
+    margin-top: 4rem;
     width: 46.3125rem;
 }
 

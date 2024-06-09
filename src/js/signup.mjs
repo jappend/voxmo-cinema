@@ -1,16 +1,19 @@
 import { cinemaGrader } from "../instances/cinemaGrader.mjs";
 
+const signupForm = document.getElementById('signup-form');
 const signupButton = document.getElementById('signup-button');
 const signupModal = document.getElementById('signup-dialog');
 const closeButton = document.getElementById('right-dialog-button');
 
 const proceed = document.getElementById('signup-dialog-proceed');
 const goback = document.getElementById('signup-dialog-goback');
+const returnButtonSignup = document.getElementById('return-button-signup');
 
-const stepOne = document.getElementById('signup-dialog__dialog-step-one');
-const stepTwo = document.getElementById('signup-dialog__dialog-step-two');
-const stepThree = document.getElementById('signup-dialog__dialog-step-three');
-const stepFour = document.getElementById('signup-dialog__dialog-step-four');
+const stepOne = document.getElementById('dialog-step-one');
+const stepTwo = document.getElementById('dialog-step-two');
+const stepThree = document.getElementById('dialog-step-three');
+const stepFour = document.getElementById('dialog-step-four');
+const stepFive = document.getElementById('dialog-step-five');
 
 const nameInput = document.getElementById('signup-input-first-name');
 const nameError = document.getElementById('firstname-error');
@@ -37,14 +40,11 @@ const passwordNumberValIcon = document.getElementById('password-val-5-icon');
 
 const birthdayInput = document.getElementById('signup-input-birthdate');
 
+const navigation = document.getElementById('navigation-bottom-signup');
+
 let modalStep = 1;
 let passwordComplete = false;
 
-const emailRegex = new RegExp("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$", "g") 
-const symbolRegex = new RegExp("[^\\w\\s]", "g");
-const uppercaseRegex = new RegExp("[A-Z]", "g");
-const lowercaseRegex = new RegExp("[a-z]", "g");
-const numberRegex = new RegExp("[\\d]", "g");
 
 signupButton.addEventListener('click', (e) => {
     e.preventDefault();
@@ -57,6 +57,10 @@ closeButton.addEventListener('click', (e) => {
 })
 
 function checkPassword(password) {
+    const symbolRegex = new RegExp("[^\\w\\s]", "g");
+    const uppercaseRegex = new RegExp("[A-Z]", "g");
+    const lowercaseRegex = new RegExp("[a-z]", "g");
+    const numberRegex = new RegExp("[\\d]", "g");
 
     if (password.length > 7) {
         passwordLengthVal.classList.remove('signup-dialog--text-error');
@@ -169,6 +173,8 @@ function checkStep() {
     } 
     
     if (modalStep === 3) {
+        const emailRegex = new RegExp("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$", "g") 
+
         if (emailInput.value.match(emailRegex)) {
             stepTwo.classList.add('invisible');
             stepThree.classList.remove('invisible');
@@ -189,44 +195,32 @@ function checkStep() {
     } 
     
     if (modalStep === 4) {
+        navigation.classList.add('signup-dialog__dialog-nav');
+        navigation.classList.remove('invisible');
         if (passwordComplete) {
             signupModal.style.height = '423px';
             stepThree.classList.add('invisible');
             stepFour.classList.remove('invisible');
+            stepFive.classList.add('invisible');
         } else {
             modalStep = 3;
         }
     } 
 
     if (modalStep === 5) {
-        proceed.disabled = true;
-        goback.disabled = true;
-        console.log("creating...")
+        const confName = document.getElementById('confirmation-name');
+        const confEmail = document.getElementById('confirmation-email');
+        const confBirthdate = document.getElementById('confirmation-birthdate');
 
-        let response;
+        confName.innerText = nameInput.value;
+        confEmail.innerText = emailInput.value;
+        confBirthdate.innerText = birthdayInput.value;
 
-        try {
-            response = cinemaGrader.post('/users', {
-                name: nameInput.value,
-                email: emailInput.value,
-                password: passwordInput.value,
-                birthday: birthdayInput.value 
-            })
-        } catch(error) {
-            console.log(error)
-        } finally {
-            modalStep = 1;
-            stepFour.classList.add('invisible');
-            stepOne.classList.remove('invisible')
+        navigation.classList.remove('signup-dialog__dialog-nav');
+        navigation.classList.add('invisible');
 
-            nameInput.value = ""
-            emailInput.value = ""
-            passwordInput.value = ""
-            birthdayInput.value = null
-
-            signupModal.close();
-            proceed.disabled = false;
-        }
+        stepFive.classList.remove('invisible');
+        stepFour.classList.add('invisible');
     }
 };
 
@@ -246,9 +240,50 @@ goback.addEventListener('click', (e) => {
     checkStep();
 })
 
+returnButtonSignup.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    modalStep--;
+    checkStep();
+})
+
 // Password Input
 passwordInput.addEventListener('input', (e) => {
     e.preventDefault();
 
     checkPassword(passwordInput.value)
+})
+
+// On Form Submit
+signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    proceed.disabled = true;
+    goback.disabled = true;
+    console.log("creating...")
+
+    let response;
+
+    try {
+        response = cinemaGrader.post('/users', {
+            name: nameInput.value,
+            email: emailInput.value,
+            password: passwordInput.value,
+            birthday: birthdayInput.value 
+        })
+    } catch(error) {
+        console.log(error)
+    } finally {
+        modalStep = 1;
+        stepFour.classList.add('invisible');
+        stepOne.classList.remove('invisible')
+
+        nameInput.value = ""
+        emailInput.value = ""
+        passwordInput.value = ""
+        birthdayInput.value = null
+
+        signupModal.close();
+        proceed.disabled = false;
+    }
 })
