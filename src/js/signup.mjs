@@ -62,6 +62,8 @@ function detectLoading() {
 signupButton.addEventListener('click', (e) => {
     e.preventDefault();
     signupModal.showModal();
+
+    nameInput.focus();
 })
 
 closeButton.addEventListener('click', (e) => {
@@ -163,6 +165,8 @@ function checkStep() {
         goback.disabled = true;
         stepOne.classList.remove('invisible');
         stepTwo.classList.add('invisible');
+
+        nameInput.focus();
     } 
     
     if (modalStep === 2) {
@@ -174,6 +178,8 @@ function checkStep() {
             stepOne.classList.add('invisible');
             stepTwo.classList.remove('invisible');
             stepThree.classList.add('invisible');
+
+            emailInput.focus();
         } else {
             modalStep = 1;
 
@@ -197,6 +203,8 @@ function checkStep() {
 
             signupModal.style.height = '694px';
             closeButton.style.top = '11%';
+            
+            passwordInput.focus();
         } else {
             modalStep = 2;
 
@@ -221,6 +229,8 @@ function checkStep() {
             stepThree.classList.add('invisible');
             stepFour.classList.remove('invisible');
             stepFive.classList.add('invisible');
+
+            birthdayInput.focus();
         } else {
             modalStep = 3;
         }
@@ -232,7 +242,6 @@ function checkStep() {
         todaysDate.setHours(0, 0, 0, 0);
 
         if (birthdayInput.value != "" && insertedDate < todaysDate) {
-            console.log(birthdayInput.value)
             const confName = document.getElementById('confirmation-name');
             const confEmail = document.getElementById('confirmation-email');
             const confBirthdate = document.getElementById('confirmation-birthdate');
@@ -337,4 +346,54 @@ signupForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     submitSignup();
+})
+
+let submitGate = 0;
+document.body.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && modalStep === 5) {
+        e.preventDefault();
+        submitGate++;
+    }
+
+    if (submitGate === 2) {
+        e.preventDefault();
+        submitSignup();
+    }
+})
+
+// Advance Step with Enter
+nameInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+
+        modalStep++;
+        checkStep();
+    }
+})
+
+emailInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+
+        modalStep++;
+        checkStep();
+    }
+})
+
+passwordInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+
+        modalStep++;
+        checkStep();
+    }
+})
+
+birthdayInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+
+        modalStep++;
+        checkStep();
+    }
 })
