@@ -6,8 +6,8 @@
     <title>VOXMO - Your free, online movie database.</title>
     <!-- CSS -->
     <link rel="stylesheet" href="./src/css/reset.css">
-    <link rel="stylesheet" href="./src/css/main.css">
-    <link rel="stylesheet" href="./src/css/header.css">
+    <link rel="stylesheet" href="./src/css/index.css">
+    <link rel="stylesheet" href="./src/css/header/index.css">
     <!-- Google Imports -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,144 +36,8 @@
             <img src="./src/svgs/chevron-down-solid.svg" alt="arrow down">
        </div>
        <div class="log-in-sign-up">
-            <button id="signup-button">Sign up</button>
-            <button id="login-button">Log in</button>
+            <a href="./src/views/signup.html">Sign up</a>
        </div>
     </header>
-
-    <dialog id="signup-dialog" class="signup-dialog">
-        <button id="close-signup-button" type="button">
-            <img src="./src/svgs/xmark-solid.svg" alt="close button" class="reg-icon">
-        </button>
-        <form id="signup-form">
-            <div id="dialog-step-one">
-                <div>
-                    <div class="signup-dialog__title-center">
-                        <div>VOXMO</div>
-                    </div>
-                    <div class="signup-dialog__content">
-                        <h1>Firstly, tell us your first name.</h1>
-                        <div class="signup-dialog__inputs">
-                            <label for="signup-input-first-name">First Name</label>
-                            <input type="text" id="signup-input-first-name" placeholder="Christopher">
-                            <p class="invisible" id="firstname-error">Your First Name must be at least 1 character long.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="dialog-step-two" class="invisible">
-                <div>
-                    <div class="signup-dialog__title-center">
-                        <div>VOXMO</div>
-                    </div>
-                    <div class="signup-dialog__content">
-                        <h1>Now, assign an email to your account.</h1>
-                        <div class="signup-dialog__inputs">
-                            <label for="signup-input-email">Email</label>
-                            <input type="text" id="signup-input-email" placeholder="chrisnolan123@email.com">
-                            <p class="invisible" id="email-error">Please insert a valid email address.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="dialog-step-three" class="invisible">
-                <div>
-                    <div class="signup-dialog__title-center">
-                        <div>VOXMO</div>
-                    </div>
-                    <div class="signup-dialog__content">
-                        <h1>Make your account secure with a password.</h1>
-                        <div class="signup-dialog__inputs">
-                            <label for="signup-input-password">Password</label>
-                            <input type="password" id="signup-input-password">
-                        </div>
-                        
-                        <div class="signup-dialog__password-validator">
-                            <span class="signup-dialog--text-error" id="password-val-1">
-                                <img src="./src/svgs/xmark-solid-wrong.svg" alt="wrong" id="password-val-1-icon"> 
-                                Must have at least 8 characters in length.
-                            </span>
-                            <span class="signup-dialog--text-error" id="password-val-2">
-                                <img src="./src/svgs/xmark-solid-wrong.svg" alt="wrong" id="password-val-2-icon"> 
-                                Must include a symbol.
-                            </span>
-                            <span class="signup-dialog--text-error" id="password-val-3">
-                                <img src="./src/svgs/xmark-solid-wrong.svg" alt="wrong" id="password-val-3-icon"> 
-                                Must include an uppercase letter.
-                            </span>
-                            <span class="signup-dialog--text-error" id="password-val-4">
-                                <img src="./src/svgs/xmark-solid-wrong.svg" alt="wrong" id="password-val-4-icon"> 
-                                Must include a lowercase letter.
-                            </span>
-                            <span class="signup-dialog--text-error" id="password-val-5">
-                                <img src="./src/svgs/xmark-solid-wrong.svg" alt="wrong" id="password-val-5-icon"> 
-                                Must include a number.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="dialog-step-four" class="invisible">
-                <div>
-                    <div class="signup-dialog__title-center">
-                        <div>VOXMO</div>
-                    </div>
-                    <div class="signup-dialog__content">
-                        <h1>Finally, tell us your birthdate.</h1>
-                        <div class="signup-dialog__inputs">
-                            <label for="signup-input-birthdate">Birthdate</label>
-                            <input type="date" id="signup-input-birthdate">
-                            <p class="invisible" id="birthdate-error">Please insert a valid birthdate.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="dialog-step-five" class="invisible">
-                <div>
-                    <div class="signup-dialog__title-center">
-                        <div>VOXMO</div>
-                    </div>
-                    <div class="signup-dialog__content">
-                        <h1>Make sure all your information is correct:</h1>
-                        <div class="signup-dialog__confirmation-inputs">
-                            <div>
-                                <span>Name:</span>
-                                <p id="confirmation-name">name</p>
-                            </div>
-                            <div>
-                                <span>Email:</span>
-                                <p id="confirmation-email">email@email.com</p>
-                            </div>
-                            <div>
-                                <span>Birthdate:</span>
-                                <p id="confirmation-birthdate">0000-00-00</p>
-                            </div>
-                            <div class="signup-dialog__confirmation-buttons">
-                                <button type="button" id="return-button-signup">
-                                    <img src="./src/svgs/chevron-left-solid.svg" alt="go back" class="modal-nav-icon icon">
-                                </button>
-                                <button type="submit">
-                                    <img src="./src/svgs/check-solid-text-white.svg" id="submit-image" alt="confirm">
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <nav id="navigation-bottom-signup">
-                <button id="signup-dialog-goback" type="button" disabled>
-                    <img src="./src/svgs/chevron-left-solid.svg" alt="go back" class="reg-icon">
-                </button>
-                <button id="signup-dialog-proceed" type="button">
-                    <img src="./src/svgs/chevron-right-solid.svg" alt="proceed" class="reg-icon">
-                </button>
-            </nav>
-        </form>
-    </dialog>
 </body>
 </html>

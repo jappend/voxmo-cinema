@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOXMO - Create your account</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/loginSignup.css">
+    <!-- Google Imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- CDNs -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
+    <!-- Javascript -->
+    <script type="module" src="./src/js/signup.mjs" defer></script>
+</head>
+<body>
+    <main>
+        <form>
+            <h1>VOXMO</h1>
+            <h2>Let's create your account.</h2>
+            <div>
+                <label for="nameInput">Name</label>
+                <input type="text" name="name" id="nameInput" placeholder="Christopher">
+            </div>
+            <div>
+                <label for="emailInput">Email</label>
+                <input type="text" name="email" id="emailInput" placeholder="email@email.com">
+            </div>
+            <div>
+                <label for="passwordInput">Password</label>
+                <input type="password" name="password" id="passwordInput">
+            </div>
+            <div>
+                <label for="birthdateInput">Birthdate</label>
+                <input type="date" name="birthdate" id="birthdateInput">
+            </div>
+            <span>
+                <button type="submit">
+                    Submit
+                    <img src="../svgs/check-solid-text-white.svg" alt="Submit">
+                </button>
+            </span>
+        </form>
+    </main>
+</body>
+</html>
