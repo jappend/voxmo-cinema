@@ -15,33 +15,36 @@
     <!-- CDNs -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
     <!-- Javascript -->
-    <script type="module" src="./src/js/signup.mjs" defer></script>
+    <script type="module" src="../js/accounts/signup.mjs" defer></script>
 </head>
 <body>
     <main>
-        <form>
+        <form id="signup-form">
             <h1>VOXMO</h1>
             <h2>Let's create your account.</h2>
             <div>
                 <label for="nameInput">Name</label>
                 <input type="text" name="name" id="nameInput" placeholder="Christopher">
+                <p id="nameError" class="invisible"></p>
             </div>
             <div>
                 <label for="emailInput">Email</label>
                 <input type="text" name="email" id="emailInput" placeholder="email@email.com">
+                <p id="emailError" class="invisible"></p>
             </div>
             <div>
                 <label for="passwordInput">Password</label>
                 <input type="password" name="password" id="passwordInput">
+                <p id="passwordError" class="invisible"></p>
             </div>
             <div>
                 <label for="birthdateInput">Birthdate</label>
                 <input type="date" name="birthdate" id="birthdateInput">
+                <p id="birthdateError" class="invisible"></p>
             </div>
             <span>
                 <button type="submit">
-                    Submit
-                    <img src="../svgs/check-solid-text-white.svg" alt="Submit">
+                    <img src="../svgs/check-solid-text-white.svg" alt="Submit" id="buttonIcon">
                 </button>
             </span>
         </form>

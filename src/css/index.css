@@ -6,7 +6,7 @@ body {
     display: none;
 }
 
-@keyframes roration {
+@keyframes rotation {
     from {
         transform: rotate(0deg);
     }
