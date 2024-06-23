@@ -148,7 +148,6 @@ async function postForm() {
         return
     }
 
-
     try {
         checkLoading(loading);
         await cinemaGrader.post('/users', {
@@ -158,6 +157,22 @@ async function postForm() {
             birthday: signupData.get('birthdate')
         })
     } catch (error) {
+        const div1 = document.getElementById('div1');
+        const div2 = document.getElementById('div2');
+        const div3 = document.getElementById('div3');
+        const div4 = document.getElementById('div4');
+        const spanSubmit = document.getElementById('spanSubmit');
+
+        const subtitle = document.querySelector('#signup-form > h2');
+
+        div1.classList.add('invisible');
+        div2.classList.add('invisible');
+        div3.classList.add('invisible');
+        div4.classList.add('invisible');
+        spanSubmit.classList.add('invisible');
+
+        subtitle.innerText = error.message;
+
         console.log(error);
     } finally {
         loading = false;
