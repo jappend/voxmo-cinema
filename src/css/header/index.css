@@ -117,7 +117,7 @@ header {
     display: flex;
     justify-content: flex-end;
 
-    width: 10%;
+    width: 100%;
     margin-right: 2.625rem;
     gap: 2.375rem;
 }
@@ -133,6 +133,36 @@ header {
     background: none;
     text-decoration: none;
     transition: 0.5s;
+}
+
+.log-in-sign-up > span {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    gap: 0.5rem;
+    transition: 0.5s;
+}
+
+.log-in-sign-up > span > img {
+    cursor: pointer;
+    height: 24px;
+}
+
+.log-in-sign-up > span > p {
+    font-weight: bold;
+    color: var(--text-white);
+
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+
+    border: none;
+    background: none;
+    text-decoration: none;
+}
+
+.log-in-sign-up > span:hover {
+    opacity: 0.5;
 }
 
 .log-in-sign-up > a:hover {

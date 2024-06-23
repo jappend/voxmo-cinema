@@ -32,7 +32,8 @@ async function sendLoginRequest() {
             password: formData.get('password')
         });
         localStorage.setItem('uuid', response?.data?.userId)
-        location.href = '../../index.html'
+        localStorage.setItem('token', response?.data?.token)
+        location.href = '../../index.html';
     } catch (error) {
         console.log(error)
     } finally {

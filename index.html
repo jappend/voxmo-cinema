@@ -15,7 +15,7 @@
     <!-- CDNs -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
     <!-- Javascript -->
-    <script src="./src/js/accounts/checkIfLoggedIn.mjs" defer></script>
+    <script type="module" src="./src/js/accounts/checkIfLoggedIn.mjs" defer></script>
 </head>
 <body>
     <header>
@@ -36,8 +36,12 @@
             <img src="./src/svgs/chevron-down-solid.svg" alt="arrow down">
        </div>
        <div class="log-in-sign-up">
-            <a href="./src/views/signup.html">Sign up</a>
-            <a href="./src/views/login.html">Login</a>
+            <a href="./src/views/signup.html" id="signup-button">Sign up</a>
+            <a href="./src/views/login.html" id="login-button">Login</a>
+            <span>
+                <img src="./src/svgs/circle-user-solid.svg" alt="user" class="invisible">
+                <p id="header-account-name" class="invisible">Name</p>
+            </span>
        </div>
     </header>
 </body>
