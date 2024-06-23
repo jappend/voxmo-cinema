@@ -156,6 +156,7 @@ async function postForm() {
             password: signupData.get('password'),
             birthday: signupData.get('birthdate')
         })
+        location.href = './login.html';
     } catch (error) {
         const div1 = document.getElementById('div1');
         const div2 = document.getElementById('div2');
