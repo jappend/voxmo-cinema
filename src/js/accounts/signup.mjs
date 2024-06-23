@@ -4,6 +4,11 @@ const signupForm = document.getElementById('signup-form');
 
 // Validation Functions
 function checkInputs(formData) {
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const password = formData.get('password');
+    const birthdate = formData.get('birthdate');
+
     let inputStatus = {
         name: 'OK',
         email: 'OK',
@@ -11,27 +16,43 @@ function checkInputs(formData) {
         birthday: 'OK'
     }
 
+    // Check if password is valid
+    const passwordSymbol = new RegExp('[^\\w\\s]', 'g');
+    const passwordUpper = new RegExp('[A-Z]', 'g');
+    const passwordLower = new RegExp('[a-z]', 'g');
+    const passwordNumber = new RegExp('[\\d]', 'g');
+
+    if (password.length < 7 ||
+        !password.match(passwordSymbol) ||
+        !password.match(passwordUpper) ||
+        !password.match(passwordLower) ||
+        !password.match(passwordNumber)
+    ) {
+        inputStatus.password = 'The password must include at least 8 characters in length, one symbol, one lowercase letter, one uppercase letter and one number.'
+    }
+
+
     // Check if email is valid
     const emailRegex = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$', 'g');
 
-    if (!formData.get('email').match(emailRegex)) {
+    if (!email.match(emailRegex)) {
         inputStatus.email = 'Email must be valid.';
     }
 
     // Check if inputs are empty
-    if (formData.get('name').replaceAll(' ', '') === '') {
+    if (name.replaceAll(' ', '') === '') {
         inputStatus.name = 'Name field is required.';
     }
 
-    if (formData.get('email').replaceAll(' ', '') === '') {
+    if (email.replaceAll(' ', '') === '') {
         inputStatus.email = 'Email field is required.';
     }
 
-    if (formData.get('password').replaceAll(' ', '') === '') {
+    if (password.replaceAll(' ', '') === '') {
         inputStatus.password = 'Password field is required.';
     }
 
-    if (formData.get('birthdate').replaceAll(' ', '') === '') {
+    if (birthdate.replaceAll(' ', '') === '') {
         inputStatus.birthday = 'Birthday field is required.';
     }
 
