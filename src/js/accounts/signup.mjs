@@ -16,6 +16,14 @@ function checkInputs(formData) {
         birthday: 'OK'
     }
 
+    // Check if birthdate is valid
+    const birthdateDateType = new Date(birthdate).setHours(0, 0, 0, 0);
+    const todaysDate = new Date().setHours(0, 0, 0, 0);
+
+    if (birthdateDateType > todaysDate) {
+        inputStatus.birthday = 'Birthdate must be valid.';
+    }
+
     // Check if password is valid
     const passwordSymbol = new RegExp('[^\\w\\s]', 'g');
     const passwordUpper = new RegExp('[A-Z]', 'g');
