@@ -172,7 +172,13 @@ async function postForm() {
         div4.classList.add('invisible');
         spanSubmit.classList.add('invisible');
 
-        subtitle.innerText = error.message;
+        if (error?.response?.data?.message) {
+            subtitle.innerText = error.response.data.message;
+            signupForm.style.height = '200px';
+        } else {
+            subtitle.innerText = error.message;
+            signupForm.style.height = '200px';
+        }
 
         console.log(error);
     } finally {
