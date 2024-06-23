@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOXMO - Login to your account.</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/loginSignup.css">
+    <!-- Google Imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- CDNs -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
+    <!-- Javascript -->
+    <script type="module" src="../js/accounts/login.mjs" defer></script>
+</head>
+<body>
+    <main>
+        <form id="login-form">
+            <h1>VOXMO</h1>
+            <h2>Let's log-in to your account.</h2>
+            <div>
+                <label for="emailInput">Email</label>
+                <input type="text" name="email" id="emailInput" placeholder="email@email.com">
+                <p id="emailError" class="invisible"></p>
+            </div>
+            <div>
+                <label for="passwordInput">Password</label>
+                <input type="password" name="password" id="passwordInput">
+                <p id="passwordError" class="invisible"></p>
+            </div>
+            <span id="spanSubmit">
+                <button type="submit">
+                    <img src="../svgs/check-solid-text-white.svg" alt="Submit" id="buttonIcon">
+                </button>
+            </span>
+        </form>
+    </main>
+</body>
+</html>
