@@ -3,79 +3,39 @@ import { cinemaGrader } from "../../instances/cinemaGrader.mjs";
 const signupForm = document.getElementById('signup-form');
 
 // Validation Functions
-function checkForEmptyInput(inputBox, inputError, errorMessage) {
-    let errorBool = false;
-
-    if (inputBox.value.replaceAll(' ', '') === '') {
-        errorBool = true;
-
-        inputBox.classList.add('error');
-        inputError.innerText = errorMessage;
-        inputError.classList.remove('invisible');
-    } else {
-        errorBool = false;
-
-        inputBox.classList.remove('error');
-        inputError.classList.add('invisible');
+function checkInputs(formData) {
+    let inputStatus = {
+        name: 'OK',
+        email: 'OK',
+        password: 'OK',
+        birthday: 'OK'
     }
 
-    return errorBool;
-}
+    // Check if email is valid
+    const emailRegex = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$', 'g');
 
-function checkEmailAddress(emailBox, emailError, errorMessage) {
-    let errorBool = false;
-
-    const emailRegex = new RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$', 'g')
-
-    if (!emailBox.value.match(emailRegex)) {
-        errorBool = true;
-
-        emailBox.classList.add('error');
-        emailError.innerText = errorMessage;
-        emailError.classList.remove('invisible');
-    } else {
-        errorBool = false;
-
-        emailBox.classList.remove('error');
-        emailError.classList.add('invisible');
+    if (!formData.get('email').match(emailRegex)) {
+        inputStatus.email = 'Email must be valid.';
     }
 
-    return errorBool;
-}
-
-function validateInputs() {
-    const nameInput = document.getElementById('nameInput');
-    const emailInput = document.getElementById('emailInput');
-    const passwordInput = document.getElementById('passwordInput');
-    const birthdayInput = document.getElementById('birthdateInput');
-
-    const nameError = document.getElementById('nameError');
-    const emailError = document.getElementById('emailError');
-    const passwordError = document.getElementById('passwordError');
-    const birthdayError = document.getElementById('birthdateError');
-
-    let hasError = false;
-
-    // Empty Input Check
-    const nameEmpty = checkForEmptyInput(nameInput, nameError, 'Name field is required.');
-    const emailEmpty = checkForEmptyInput(emailInput, emailError, 'Email field is required.');
-    const passwordEmpty = checkForEmptyInput(passwordInput, passwordError, 'Password field is required.');
-    const birthdayEmpty = checkForEmptyInput(birthdayInput, birthdayError, 'Birthday field is required.');
-
-    if (nameEmpty || emailEmpty || passwordEmpty || birthdayEmpty) {
-        hasError = true;
-        return hasError;
+    // Check if inputs are empty
+    if (formData.get('name').replaceAll(' ', '') === '') {
+        inputStatus.name = 'Name field is required.';
     }
 
-    // Valid Email Check
-    const emailNotValid = checkEmailAddress(emailInput, emailError, 'Must be a valid email address.');
-
-    if (emailNotValid) {
-        hasError = true;
-        return hasError;
+    if (formData.get('email').replaceAll(' ', '') === '') {
+        inputStatus.email = 'Email field is required.';
     }
 
-    return hasError;
+    if (formData.get('password').replaceAll(' ', '') === '') {
+        inputStatus.password = 'Password field is required.';
+    }
+
+    if (formData.get('birthdate').replaceAll(' ', '') === '') {
+        inputStatus.birthday = 'Birthday field is required.';
+    }
+
+    return inputStatus;
 }
 
 // Loading Function
@@ -96,11 +56,69 @@ function checkLoading(loadingBool) {
 async function postForm() {
     const signupData = new FormData(signupForm);
 
-    let loading = true;
+    const nameInput = document.getElementById('nameInput');
+    const emailInput = document.getElementById('emailInput');
+    const passwordInput = document.getElementById('passwordInput');
+    const birthdateInput = document.getElementById('birthdateInput');
 
-    if (validateInputs()) {
-        return;
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+    const birthdateError = document.getElementById('birthdateError');
+
+    const inputsValidator = checkInputs(signupData);
+
+    let loading = true;
+    let allInputsValid = true;
+
+    if (inputsValidator.name != 'OK') {
+        allInputsValid = false;
+
+        nameInput.classList.add('error');
+        nameError.innerText = inputsValidator.name;
+        nameError.classList.remove('invisible');
+    } else {
+        nameInput.classList.remove('error');
+        nameError.classList.add('invisible');
     }
+
+    if (inputsValidator.email != 'OK') {
+        allInputsValid = false;
+
+        emailInput.classList.add('error');
+        emailError.innerText = inputsValidator.email;
+        emailError.classList.remove('invisible');
+    } else {
+        emailInput.classList.remove('error');
+        emailError.classList.add('invisible');
+    }
+
+    if (inputsValidator.password != 'OK') {
+        allInputsValid = false;
+
+        passwordInput.classList.add('error');
+        passwordError.innerText = inputsValidator.password;
+        passwordError.classList.remove('invisible');
+    } else {
+        passwordInput.classList.remove('error');
+        passwordError.classList.add('invisible');
+    }
+
+    if (inputsValidator.birthday != 'OK') {
+        allInputsValid = false;
+
+        birthdateInput.classList.add('error');
+        birthdateError.innerText = inputsValidator.birthday;
+        birthdateError.classList.remove('invisible');
+    } else {
+        birthdateInput.classList.remove('error');
+        birthdateError.classList.add('invisible');
+    }
+
+    if (!allInputsValid) {
+        return
+    }
+
 
     try {
         checkLoading(loading);
