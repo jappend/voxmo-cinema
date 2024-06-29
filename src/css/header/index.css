@@ -139,6 +139,8 @@ header {
     display: flex;
     flex-direction: row;
 
+    margin-right: 0.5rem;
+
     align-items: center;
     gap: 0.5rem;
     transition: 0.5s;

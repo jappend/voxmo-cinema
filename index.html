@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./src/css/header/index.css">
     <link rel="stylesheet" href="./src/css/mainpage/index.css">
     <link rel="stylesheet" href="./src/css/mainpage/movie.css">
+    <link rel="stylesheet" href="./src/css/header/accountTooltip.css">
     <!-- Google Imports -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +20,7 @@
     <!-- Javascript -->
     <script type="module" src="./src/js/accounts/checkIfLoggedIn.mjs" defer></script>
     <script type="module" src="./src/js/movies/displayMovies.mjs" defer></script>
+    <script type="module" src="./src/js/header/accountTooltip.mjs" defer></script>
 </head>
 <body>
     <header>
@@ -41,10 +43,21 @@
        <div class="log-in-sign-up">
             <a href="./src/views/signup.html" id="signup-button">Sign up</a>
             <a href="./src/views/login.html" id="login-button">Login</a>
-            <span>
+            <span id="header-account-span">
                 <img src="./src/svgs/circle-user-solid.svg" alt="user" class="invisible">
                 <p id="header-account-name" class="invisible">Name</p>
             </span>
+            <div class="log-in-sign-up__account-tooltip--hover" id="tooltip-hover"></div>
+            <div class="log-in-sign-up__account-tooltip" id="account-tooltip">
+                <a href="#">
+                    <img src="./src/svgs/clipboard-user-solid-text-white.svg" alt="dashboard">
+                    Dashboard
+                </a>
+                <button id="account-logout">
+                    <img src="./src/svgs/right-from-bracket-solid-error.svg" alt="logout">
+                    Logout
+                </button>
+            </div>
        </div>
     </header>
 
