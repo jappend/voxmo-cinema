@@ -33,7 +33,6 @@ function movieDOM(img, title, release, rating, synopsis) {
     if (!document.getElementById(`${movieGenre}-list`)) {
         const main = document.querySelector('main');
         const titleSpan = document.createElement('span');
-        const titleDecoration = document.createElement('div');
         const titleText = document.createElement('h1');
         const movieListElem = document.createElement('div');
 
@@ -41,7 +40,7 @@ function movieDOM(img, title, release, rating, synopsis) {
         movieListElem.classList.add('movies');
         movieListElem.id = `${movieGenre}-list`;
 
-        titleSpan.append(titleDecoration, titleText);
+        titleSpan.append(titleText);
         main.append(titleSpan, movieListElem);
     }
 

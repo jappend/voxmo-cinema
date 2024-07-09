@@ -3,7 +3,19 @@ main {
     margin-left: 2.5rem;
 }
 
-main > span > div {
+main > span > h1 {
+    position: relative;
+
+    color: var(--text-white);
+    font-weight: bold;
+    font-size: 3rem;
+    margin-left: 0.5rem;
+}
+
+main > span > h1::after {
+    position: absolute;
+    content: '';
+
     z-index: -1;
     position: absolute; 
     height: 2.5rem;
@@ -11,11 +23,7 @@ main > span > div {
 
     background-color: var(--brand-blue-dark);
     border-radius: 0.3125rem;
-}
 
-main > span > h1 {
-    color: var(--text-white);
-    font-weight: bold;
-    font-size: 3rem;
-    margin-left: 0.5rem;
+    bottom: 1px;
+    left: -0.5rem;
 }
