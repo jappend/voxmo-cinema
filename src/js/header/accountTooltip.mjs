@@ -1,6 +1,5 @@
 const headerAccountSpan = document.getElementById('header-account-span');
 const main = document.querySelector('main');
-const spanAccountName = document.querySelector('.log-in-sign-up > span > p');
 
 const logoutButton = document.getElementById('account-logout');
 
@@ -13,6 +12,8 @@ headerAccountSpan.addEventListener('mouseenter', (e) => {
     accountTooltip.style.right = spanAccount.offsetWidth / 2 + 10 + "px";
     accountTooltip.style.display = "flex";
 })
+
+//FIXME: make tooltip work properly 
 
 main.addEventListener('mouseenter', (e) => {
     e.preventDefault();

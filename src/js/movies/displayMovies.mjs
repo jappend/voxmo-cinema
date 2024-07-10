@@ -2,7 +2,7 @@ import { cinemaGrader } from "../../instances/cinemaGrader.mjs";
 
 // Movie Functions
 
-function movieDOM(img, title, release, rating, synopsis) {
+function movieDOM(img, title, release, rating, synopsis, movieId) {
     const div = document.createElement('div');
     const poster = document.createElement('img');
     const h1 = document.createElement('h1');
@@ -20,13 +20,18 @@ function movieDOM(img, title, release, rating, synopsis) {
 
     const roundedHalfRating = (Math.round(rating * 2) / 2).toFixed(1);
 
-    console.log(roundedHalfRating)
-
     ratingImg.src = `./src/svgs/stars/${roundedHalfRating}.svg`;
-    ratingImg.alt = 'rating';
+    ratingImg.alt = `rating of ${roundedHalfRating}`;
 
     div2.append(ratingImg);
     div.append(poster, h1, h2, div2);
+    div.id = movieId;
+
+    div.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        location.href = `./src/views/movie.html?id=${movieId}`;
+    });
 
     const movieGenre = synopsis.split(' ')[0];
 
@@ -65,8 +70,7 @@ async function start() {
     const movieList = await getMovies();
 
     for (let movie of movieList) {
-        movieDOM(movie.picture, movie.title, movie.releaseDate.split('-')[0], movie.averageGrade, movie.synopsis)
-        console.log(movie)
+        movieDOM(movie.picture, movie.title, movie.releaseDate.split('-')[0], movie.averageGrade, movie.synopsis, movie.id)
     }
 }
 

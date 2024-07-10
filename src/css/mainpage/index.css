@@ -17,13 +17,12 @@ main > span > h1::after {
     content: '';
 
     z-index: -1;
-    position: absolute; 
     height: 2.5rem;
     width: 2.5rem;
 
     background-color: var(--brand-blue-dark);
     border-radius: 0.3125rem;
 
-    bottom: 1px;
+    top: -0.1rem;
     left: -0.5rem;
 }

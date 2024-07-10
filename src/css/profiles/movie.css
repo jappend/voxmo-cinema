@@ -1,0 +1,106 @@
+main > div {
+    position: relative;
+
+    margin-left: 6.875rem;
+    margin-top: 2.375rem;
+}
+
+main > div > img {
+    height: 576px;
+    width: 24.9375rem;
+
+    border-radius: 0.9rem;
+    border: none;
+    border: none;
+    outline: none;
+}
+
+main > div > .div__gradient {
+    position: absolute;
+
+    height: 576px;
+    width: 24.9375rem;
+
+    background: linear-gradient(to right, rgba(23, 24, 25, 0), rgba(23, 24, 25, 1) 95%);
+
+    top: 0rem;
+    left: 0rem;
+    border-radius: 0.625rem;
+    border: none;
+    outline: none;
+}
+
+.div__movie-info {
+    z-index: 2;
+    display: flex;
+    position: absolute;
+
+    flex-direction: column;
+
+    height: 95%;
+
+   justify-content: space-between; 
+
+    top: 0.6875rem;
+    left: 24rem;
+}
+
+.div__movie-info > div > h2 {
+    color: var(--text-white);
+    font-weight: bold;
+    font-style: italic;
+    font-size: 4rem;
+}
+
+.div__movie-info > div > h3 {
+    margin-top: 0.4375rem;
+
+    width: 39.25rem;
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: var(--grey);
+}
+
+.div__movie-info > div > span {
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 0.4375rem;
+    align-items: center;
+}
+
+.div__movie-info > div > span > img {
+    height: 28px;
+}
+
+.div__movie-info > div > span > p {
+    margin-top: 0.1rem;
+    font-size: 1rem;
+
+    margin-left: 0.4375rem;
+    font-weight: bold;
+    color: var(--grey);
+}
+
+.div__movie-info > div > p {
+    font-weight: 600;
+    color: var(--text-white);
+
+    font-size: 1.5rem;
+    margin-top: 0.4rem;
+}
+
+.div__movie-info > div > p > a {
+    font-weight: 300;
+    color: var(--grey);
+    font-style: italic;
+
+    padding: 0rem 0.3rem 0rem 0.3rem;
+
+    transition: 0.5s;
+}
+
+.div__movie-info > div > p > a:hover {
+    background-color: var(--grey);
+    color: var(--dark-less);
+}
