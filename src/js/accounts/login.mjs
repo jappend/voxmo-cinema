@@ -1,4 +1,5 @@
 import { cinemaGrader } from "../../instances/cinemaGrader.mjs";
+import { setCookie } from "../misc/cookies.mjs";
 
 const loginForm = document.getElementById('login-form');
 
@@ -111,8 +112,8 @@ async function sendLoginRequest() {
             email: formData.get('email'),
             password: formData.get('password')
         });
-        localStorage.setItem('uuid', response?.data?.userId)
-        localStorage.setItem('token', response?.data?.token)
+        localStorage.setItem('uuid', response?.data?.userId);
+        setCookie('Authorization', response?.data?.token, 1);
         location.href = '../../index.html';
     } catch (error) {
         const errorDisplay = document.getElementById('error-display');

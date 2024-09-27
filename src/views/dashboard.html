@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - VOXMO</title>
+    <link rel="shortcut icon" href="../../public/favicon.png" type="image/x-icon">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/header/index.css">
+    <link rel="stylesheet" href="../css/header/accountTooltip.css">
+    <link rel="stylesheet" href="../css/mainpage/index.css">
+    <!-- Google Imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- CDNs -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
+    <!-- Javascript -->
+    <script type="module" src="../js/header/index.mjs" defer></script>
+    <script type="module" src="../js/accounts/checkIfLoggedIn.mjs" defer></script>
+    <script type="module" src="../js/header/accountTooltip.mjs" defer></script>
+</head>
+<body>
+    <header>
+        <div id="titleicon">V</div>
+        <div class="searchbar">
+            <form>
+                <input type="text" placeholder="Search VOXMO..." id="searchbar-input">
+            </form>
+            <img src="../svgs/magnifying-glass-solid.svg" alt="search icon" >
+        </div>
+        <div class="dropdown-menu">
+            Menu 
+            <img src="../svgs/chevron-down-solid.svg" alt="arrow down">
+        </div>
+       <div class="vertical-header-rule"></div> 
+       <div class="dropdown-menu">
+            EN 
+            <img src="../svgs/chevron-down-solid.svg" alt="arrow down">
+       </div>
+       <div class="log-in-sign-up">
+            <a href="../views/signup.html" id="signup-button">Sign up</a>
+            <a href="../views/login.html" id="login-button">Login</a>
+            <span id="header-account-span">
+                <img src="../svgs/circle-user-solid.svg" alt="user" class="invisible">
+                <p id="header-account-name" class="invisible">Name</p>
+            </span>
+            <div class="log-in-sign-up__account-tooltip--hover" id="tooltip-hover"></div>
+            <div class="log-in-sign-up__account-tooltip" id="account-tooltip">
+                <a href="./dashboard.html">
+                    <img src="../svgs/clipboard-user-solid-text-white.svg" alt="dashboard">
+                    Dashboard
+                </a>
+                <button id="account-logout">
+                    <img src="../svgs/right-from-bracket-solid-error.svg" alt="logout">
+                    Logout
+                </button>
+            </div>
+       </div>
+    </header>
+
+    <main>
+    </main>
+</body>
+</html>

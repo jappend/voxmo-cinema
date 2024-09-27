@@ -1,3 +1,5 @@
+import { deleteCookie } from "../misc/cookies.mjs";
+
 const headerAccountSpan = document.getElementById('header-account-span');
 const main = document.querySelector('main');
 
@@ -22,6 +24,7 @@ headerAccountSpan.addEventListener('click', (e) => {
 logoutButton.addEventListener('click', (e) => {
     e.preventDefault();
 
+    deleteCookie("Authorization");
     localStorage.clear();
     location.reload();
 })
